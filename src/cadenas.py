@@ -28,5 +28,22 @@ def es_palindromo(texto: str, ignora_espacio: bool = False, ignora_mayuscula: bo
     return texto == invierte_cadena(texto)
 
 
-def estiliza_mensajes(texto:str, alterna_may_min: bool = True) -> str:
-    
+def estiliza_mensaje(texto:str, alterna_may_min: bool = True, sustituye_espacios: str = " ") -> str:
+    txt=""
+    if alterna_may_min:
+        contador_letras = 0
+        for c in texto:
+            if c.isalpha():
+                if contador_letras % 2 == 0:
+                    txt += c.upper()
+                else:
+                    txt += c.lower()
+                contador_letras += 1
+            else:
+                txt += c  
+    else:
+        txt = texto
+    if sustituye_espacios:
+        txt= txt.replace(" ",sustituye_espacios)
+    return txt
+        
